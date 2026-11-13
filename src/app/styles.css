@@ -532,6 +532,96 @@ kbd {
 .level-pips i.active {
   background: #b2ebbd;
 }
+.loadout-globals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+  margin-top: 15px;
+  padding: 8px 9px;
+  border: 1px solid #2b3c34;
+  border-radius: 4px;
+  background: #131d18;
+}
+.weapon-detail {
+  border: 1px solid #3a5148;
+  background: #19271f;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.weapon-detail.locked {
+  background: #141b23;
+  border: 1px dashed #2e3945;
+  opacity: 0.7;
+}
+.weapon-detail .weapon {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding-bottom: 4px;
+}
+.weapon-body {
+  position: relative;
+  padding: 0 10px 10px;
+}
+.weapon-body .level-pips {
+  position: static;
+  margin: 0 0 8px 42px;
+}
+.weapon-branch-line {
+  padding: 0 0 8px;
+}
+.branch-tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: 0.6px;
+  color: #d4b7f2;
+  border: 1px solid #5a4274;
+  background: #2a2036;
+  border-radius: 3px;
+  padding: 3px 7px;
+}
+.branch-tag small {
+  font: 7px "Space Grotesk", sans-serif;
+  color: #957cb5;
+  letter-spacing: 0.5px;
+}
+.branch-tag.pending {
+  color: #f2d29a;
+  border-color: #6a5631;
+  background: #2d2618;
+}
+.branch-tag.none {
+  color: #93a1a8;
+  border-color: #3b4a51;
+  background: #1c2629;
+}
+.weapon-params {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+  padding: 2px 0 4px;
+}
+.weapon-param {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 8px;
+  color: #7e9a88;
+  border-bottom: 1px dotted #2c4136;
+  padding-bottom: 3px;
+}
+.weapon-param strong {
+  color: #d8ecda;
+  font-weight: 400;
+}
+.weapon-branch-desc {
+  margin: 4px 0 0;
+  font-size: 8px;
+  line-height: 1.6;
+  color: #9ab6a6;
+}
 .hint {
   font-size: 10px;
   color: #a1b3a6;
@@ -747,6 +837,38 @@ footer .mono {
   display: block;
   margin-top: 20px;
 }
+.upgrade-options.branch-grid {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.upgrade-options .branch-option {
+  border-color: #735a94;
+  background: #1d1a27;
+}
+.upgrade-options .branch-option:hover {
+  background: #2c2640;
+  border-color: #cbb3ef;
+}
+.upgrade-options .branch-option .upgrade-symbol {
+  color: #d7c2f4;
+}
+.branch-preview {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  font:
+    9px "Space Grotesk",
+    monospace;
+  color: #b7a8cc;
+}
+.branch-preview li {
+  padding: 2px 0;
+}
+.lock-warning {
+  color: #f0c07e;
+}
 .upgrade-dialog > small {
   font-size: 9px;
 }
@@ -782,6 +904,34 @@ footer .mono {
   padding: 6px;
   border-bottom: 1px solid #263f34;
 }
+.damage-breakdown .branch-damage {
+  padding-left: 14px;
+  color: #b9a3d6;
+  border-bottom-color: #372c47;
+}
+.branch-damage small {
+  font-size: 8px;
+  color: #7a6c8d;
+}
+.branch-stats {
+  margin-top: 16px;
+  border-top: 1px solid #28372f;
+  padding-top: 9px;
+}
+.branch-row > span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #bfa7da;
+}
+.branch-row small {
+  font-size: 8px;
+  color: #74808a;
+}
+.branch-row strong {
+  color: #d9c2f0;
+  font-size: 13px;
+}
 .app-shell > .overlay {
   position: fixed;
 }
@@ -808,6 +958,10 @@ footer .mono {
   right: 15px;
   color: #91a297;
   font-size: 11px;
+}
+.history-branches {
+  color: #b9a3d6;
+  font-size: 9px;
 }
 .history-row {
   display: flex;

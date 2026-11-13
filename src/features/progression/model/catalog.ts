@@ -1,4 +1,9 @@
 import type { Upgrade } from "../../../shared/types";
+/**
+ * The random passive pool. Weapon level-ups are derived at runtime so a weapon
+ * at its branch node can never offer a plain level, and a maxed weapon simply
+ * disappears from the pool instead of wasting a level.
+ */
 export const UPGRADE_CATALOG: Upgrade[] = [
   {
     id: "recovery",
@@ -52,29 +57,8 @@ export const UPGRADE_CATALOG: Upgrade[] = [
   {
     id: "pierce",
     name: "穿透弹芯",
-    description: "脉冲弹额外穿透 1 个目标",
+    description: "全部武器额外穿透 1 个目标",
     category: "火力",
     max: 3,
-  },
-  {
-    id: "pulse",
-    name: "脉冲进化",
-    description: "升级脉冲步枪：伤害与射速提升",
-    category: "武器",
-    max: 4,
-  },
-  {
-    id: "orbit",
-    name: "环轨飞刃",
-    description: "解锁或升级环轨飞刃",
-    category: "武器",
-    max: 5,
-  },
-  {
-    id: "nova",
-    name: "新星爆发",
-    description: "解锁或升级新星爆发",
-    category: "武器",
-    max: 5,
   },
 ];

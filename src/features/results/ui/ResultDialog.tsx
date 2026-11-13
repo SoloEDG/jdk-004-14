@@ -1,5 +1,7 @@
-import type { GameDoc } from "../../../shared/types";
+import type { GameDoc, WeaponBranchId } from "../../../shared/types";
 import { formatTime } from "../../../shared/math";
+import { BRANCH_CATALOG, WEAPON_CATALOG } from "../../arsenal/model/catalog";
+
 export function ResultDialog({
   doc,
   restart,
@@ -7,6 +9,11 @@ export function ResultDialog({
   doc: GameDoc;
   restart: () => void;
 }) {
+  const branches = (
+    Object.entries(doc.stats.byBranch) as [WeaponBranchId, number][]
+  )
+    .filter(([, value]) => value > 0)
+    .sort((a, b) => b[1] - a[1]);
   return (
     <div className="overlay">
       <div className="result-dialog">
@@ -33,6 +40,15 @@ export function ResultDialog({
           {Object.entries(doc.stats.byWeapon).map(([key, value]) => (
             <div key={key}>
               <span>{key.toUpperCase()}</span>
+              <span>{Math.round(value)} DMG</span>
+            </div>
+          ))}
+          {branches.map(([id, value]) => (
+            <div className="branch-damage" key={id}>
+              <span>
+                {BRANCH_CATALOG[id].name}
+                <small> {WEAPON_CATALOG[BRANCH_CATALOG[id].weapon].name}</small>
+              </span>
               <span>{Math.round(value)} DMG</span>
             </div>
           ))}

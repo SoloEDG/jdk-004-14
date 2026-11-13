@@ -85,9 +85,23 @@ export function renderScene(ctx: CanvasRenderingContext2D, d: GameDoc) {
             : "#a7ffe1";
     ctx.shadowColor = ctx.fillStyle;
     ctx.shadowBlur = 8;
+    if (b.behavior === "chain" || b.bounced) {
+      // Chain shards read as smaller sparks than their parent star ring.
+      ctx.globalAlpha = 0.85;
+    }
     ctx.beginPath();
-    ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
-    ctx.fill();
+    if (b.behavior === "boomerang") {
+      // Blades are drawn as short streaks so their return leg is readable.
+      ctx.save();
+      ctx.translate(b.x, b.y);
+      ctx.rotate(Math.atan2(b.vy, b.vx));
+      ctx.fillRect(-b.radius * 2.4, -b.radius * 0.55, b.radius * 4.8, b.radius * 1.1);
+      ctx.restore();
+    } else {
+      ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
   }
   ctx.shadowBlur = 0;
   const p = d.player;
